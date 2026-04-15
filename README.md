@@ -1,67 +1,163 @@
-# learn-file-storage-s3-golang-starter (Tubely)
+# 🚀 Tubely
 
-This repo contains the starter code for the Tubely application - the #1 tool for engagement bait - for the "Learn File Servers and CDNs with S3 and CloudFront" [course](https://www.boot.dev/courses/learn-file-servers-s3-cloudfront-golang) on [boot.dev](https://www.boot.dev)
+Tubely is a scalable backend system for handling **media uploads, processing, and delivery**, inspired by real-world platforms like YouTube. It demonstrates how modern applications manage files using **cloud storage (AWS S3)** and **CDNs (CloudFront)**.
 
-## Quickstart
+---
 
-*This is to be used as a *reference\* in case you need it, you should follow the instructions in the course rather than trying to do everything here.
+## ✨ Features
 
-## 1. Install dependencies
+* 📤 Upload images and videos
+* 🗂️ Store and manage media assets
+* 🎬 Process videos using FFmpeg
+* ☁️ Cloud storage integration with AWS S3
+* 🌍 Fast delivery via CDN (CloudFront)
+* 🗃️ Lightweight database using SQLite
+* ⚡ RESTful API built with Go
 
-- [Go](https://golang.org/doc/install)
-- `go mod download` to download all dependencies
-- [FFMPEG](https://ffmpeg.org/download.html) - both `ffmpeg` and `ffprobe` are required to be in your `PATH`.
+---
+
+## 🛠️ Tech Stack
+
+* **Language:** Go (Golang)
+* **Storage:** AWS S3
+* **CDN:** AWS CloudFront
+* **Database:** SQLite
+* **Media Processing:** FFmpeg
+* **CLI Tools:** AWS CLI
+
+---
+
+## 📦 Installation
+
+### 1. Clone the repository
 
 ```bash
-# linux
+git clone https://github.com/Ocidemus/tubely.git
+cd tubely
+```
+
+---
+
+### 2. Install dependencies
+
+#### Go modules
+
+```bash
+go mod download
+```
+
+#### FFmpeg
+
+```bash
+# Ubuntu/Debian
 sudo apt update
 sudo apt install ffmpeg
 
-# mac
-brew update
+# macOS
 brew install ffmpeg
 ```
 
-- [SQLite 3](https://www.sqlite.org/download.html) only required for you to manually inspect the database.
+#### SQLite (optional, for inspection)
 
 ```bash
-# linux
-sudo apt update
 sudo apt install sqlite3
-
-# mac
-brew update
-brew install sqlite3
 ```
 
-- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+#### AWS CLI
 
-## 2. Download sample images and videos
+Install from: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+---
+
+## 📁 Sample Media
+
+Download sample images and videos:
 
 ```bash
 ./samplesdownload.sh
-# samples/ dir will be created
-# with sample images and videos
 ```
 
-## 3. Configure environment variables
+---
 
-Copy the `.env.example` file to `.env` and fill in the values.
+## ⚙️ Environment Setup
+
+Create your environment file:
 
 ```bash
 cp .env.example .env
 ```
 
-You'll need to update values in the `.env` file to match your configuration, but _you won't need to do anything here until the course tells you to_.
+Update the `.env` file with your credentials:
 
-## 3. Run the server
+```env
+PORT=
+DB_URL=
+AWS_ACCESS_KEY=
+AWS_SECRET_KEY=
+S3_BUCKET=
+CLOUDFRONT_URL=
+```
+
+---
+
+## ▶️ Running the Server
 
 ```bash
 go run .
 ```
 
-- You should see a new database file `tubely.db` created in the root directory.
-- You should see a new `assets` directory created in the root directory, this is where the images will be stored.
-- You should see a link in your console to open the local web page.
-# tubely
-# tubely
+After running:
+
+* `tubely.db` → database will be created
+* `assets/` → stores uploaded files
+* Server will start on the configured port
+
+---
+
+## 📡 API Overview
+
+| Method | Endpoint    | Description          |
+| ------ | ----------- | -------------------- |
+| POST   | /upload     | Upload media file    |
+| GET    | /assets     | Fetch all assets     |
+| GET    | /assets/:id | Fetch specific asset |
+| DELETE | /assets/:id | Delete an asset      |
+
+---
+
+## 🧠 What This Project Demonstrates
+
+* Designing scalable file storage systems
+* Integrating backend services with AWS
+* Handling large media efficiently
+* Using CDNs for performance optimization
+* Writing clean and modular Go code
+
+---
+
+## 🔐 Security Note
+
+Sensitive credentials are stored in `.env` and are **not committed**.
+Always rotate keys if exposed.
+
+---
+
+## 📌 Future Improvements
+
+* 🔐 Authentication & authorization
+* 🎞️ Video streaming support (HLS/DASH)
+* 📊 Analytics dashboard
+* 🧵 Background job processing (queues)
+* 🐳 Dockerized deployment
+
+---
+
+## 🙌 Acknowledgements
+
+Inspired by real-world media systems and cloud architecture patterns.
+
+---
+
+## ⭐ Show your support
+
+If you like this project, give it a ⭐ on GitHub!
